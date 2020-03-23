@@ -1,8 +1,8 @@
 import datetime
 
-def now_minutes():
+def get_time():
     now = datetime.datetime.utcnow() + datetime.timedelta(hours=+3)
-    minutes = int(now.strftime('%M'))
+    minutes = f"{now:%H:%M}"
     return minutes
 
 
@@ -11,7 +11,7 @@ def time_progress():
     now_seconds = (int(now.strftime('%H')) * 60 + int(now.strftime('%M'))) * 60 + int(now.strftime('%S'))
     
     if now_seconds >= 28800 and now_seconds <= 84600:
-        percent_progress = (now_seconds - 28800)/55800 #от 8:00 до 23:30
+        percent_progress = (now_seconds - 28800)/55800 # 8:00 - 23:30
     else:
         percent_progress = 0
 
